@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import io from 'socket.io-client';
 
-const socket = io('http://localhost:5000');
+const socket = io('https://xavia.pro');
 
 function App() {
   const [yourUserId, setYourUserId] = useState('');
@@ -17,7 +17,7 @@ function App() {
 
   const loadSessionAndMessages = async () => {
     try {
-      const res = await fetch(`http://localhost:5000/api/chats/sessions?userId=${yourUserId}`);
+      const res = await fetch(`https://xavia.pro/api/chats/sessions?userId=${yourUserId}`);
       const json = await res.json();
       const session = json.data.find(
         (s) =>
@@ -36,7 +36,7 @@ function App() {
         );
 
         const msgRes = await fetch(
-          `http://localhost:5000/api/chats/sessions/${session.id}/messages`
+          `https://xavia.pro/api/chats/sessions/${session.id}/messages`
         );
         const msgJson = await msgRes.json();
         setChatHistory(msgJson.data);
