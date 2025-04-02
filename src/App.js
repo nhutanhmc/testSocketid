@@ -18,7 +18,7 @@ function App() {
 
     console.log('🔗 Sending request to create/join chat...');
 
-    const res = await fetch('http://localhost:5000/api/chat-supa/chats', {
+    const res = await fetch('https://xavia.pro/api/chat-supa/chats', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ participant1_id: yourUserId, participant2_id: receiverId }),
@@ -34,7 +34,7 @@ function App() {
 
   const loadMessages = async (chatId) => {
     console.log('📥 Loading messages for chatId:', chatId);
-    const res = await fetch(`http://localhost:5000/api/chat-supa/chats/${chatId}/messages`);
+    const res = await fetch(`https://xavia.pro/api/chat-supa/chats/${chatId}/messages`);
     const json = await res.json();
     console.log('📥 Loaded messages response:', json);
 
@@ -57,7 +57,7 @@ function App() {
     }
 
     console.log('📤 Sending message...');
-    const res = await fetch('http://localhost:5000/api/chat-supa/chats/message', {
+    const res = await fetch('https://xavia.pro/api/chat-supa/chats/message', {
       method: 'POST',
       body: formData,
     });
